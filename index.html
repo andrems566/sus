@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hábitos Diários da Pele</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="quiz-card">
+
+    <div class="step active" id="step-0">
+        <h1>🧼 Hábitos Diários</h1>
+        <p>Responda para analisarmos como seus hábitos impactam sua pele.</p>
+        <button onclick="nextStep()">Iniciar Questionário</button>
+    </div>
+
+    <div id="questions-container"></div>
+
+    <div class="step" id="step-final">
+        <h2>Resultado</h2>
+        <div id="resultado-texto" class="result-box"></div>
+        <button onclick="location.reload()">Refazer</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
