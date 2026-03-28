@@ -12,42 +12,49 @@
         <div class="card">
         <img src="Imagens/VidrosProdutos.jpeg" class="card-img">
         <h2 class="card-nome">Kit Rejuvenecedor</h2>
-        <p class="card-desc">O Kit Aura renovada é ideal para peles oleosas, 
-            sensíveis e acneicas. Desenvolvido para limpar, tratar e hidratar 
-            sem agredir a pele, ele ajuda a controlar a oleosidade, acalmar 
-            sensibilidades e melhorar a aparência da acne. Com embalagens de vidro e 
-            design delicado em tons de rosa claro e azul claro, o kit une eficácia, 
-            cuidado e sofisticação para uma rotina facial simples e eficiente.</p>
         <div class="card-footer">
-            <span class="card-valor">R$ 99,90</span>
-            <button class="card-btn">Comprar</button>
+            <span class="card-valor">R$ 120,00</span>
+            <button class="card-btn" onclick="abrirProduto(1)">Comprar</button>
         </div>
     </div>
     <div class="card">
         <img src="Imagens/ComunsProdutos.jpeg" class="card-img">
         <h2 class="card-nome">Kit Aura Renovada</h2>
-        <p class="card-desc">O Kit Aura renovada Facial é ideal para peles mistas 
-            e secas, desenvolvido para promover limpeza suave, tratamento eficaz e
-            hidratação profunda, sem comprometer a barreira natural da pele.
-            Sua fórmula ajuda a equilibrar áreas mistas, reduzir o aspecto ressecado
-            e devolver maciez, viço e luminosidade à pele.
-            Pensado para uma rotina completa e delicada, o kit atua na renovação da textura, 
-            no conforto da pele e na aparência saudável ao longo do dia, proporcionando um 
-            cuidado contínuo e sensorial agradável.
-            Com embalagens de vidro e design delicado em tons de rosa claro e azul claro,
-            o Aura renovada une sofisticação, autocuidado e tecnologia, transformando o 
-            skincare em um verdadeiro ritual de beleza</p>
         <div class="card-footer">
-            <span class="card-valor">R$ 99,90</span>
-            <button class="card-btn">Comprar</button>
+            <span class="card-valor">R$ 120,00</span>
+            <button class="card-btn" onclick="abrirProduto(2)">Comprar</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="Imagens/Marrom.jpeg" class="card-img">
+        <h2 class="card-nome">Kit Renova</h2>
+        <div class="card-footer">
+            <span class="card-valor">R$ 78,90</span>
+            <button class="card-btn" onclick="abrirProduto(3)">Comprar</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="Imagens/Ciano.jpeg" class="card-img">
+        <h2 class="card-nome">Kit Pele seca</h2>
+        <div class="card-footer">
+            <span class="card-valor">R$ 78,90</span>
+            <button class="card-btn" onclick="abrirProduto(4)">Comprar</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="Imagens/Rosa.jpeg" class="card-img">
+        <h2 class="card-nome">Kit Sensível</h2>
+        <div class="card-footer">
+            <span class="card-valor">R$ 78,90</span>
+            <button class="card-btn" onclick="abrirProduto(5)">Comprar</button>
         </div>
     </div>
 
 </div>
 <script>
-function comprar(){
-    alert("Opção inválida temporariamente");
-}
+    function abrirProduto(id) {
+        window.location.href = "ItensCompras.html?produto=" + id;
+    }
 </script>
 </body>
 </html>

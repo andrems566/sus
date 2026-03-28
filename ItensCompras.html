@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produto</title>
+<link rel="stylesheet" href="Css/ItensCompras.css">
+</head>
+<body>
+
+<div class="produto">
+
+    <div class="imagem">
+        <img id="imagemProduto" src="" alt="Produto">
+    </div>
+
+    <div class="info">
+        <h1 id="nomeProduto"></h1>
+        <p id="precoProduto" class="preco"></p>
+
+        <button class="comprar">Comprar</button>
+
+        <div class="descricao">
+            <p id="descricaoProduto" class="textoDescricao"></p>
+            <span class="lerMais" onclick="toggleDescricao()">Ler mais</span>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// PEGAR ID DA URL
+let parametros = new URLSearchParams(window.location.search);
+let produto = parametros.get("produto");
+
+// PRODUTOS
+let produtos = {
+    1: {
+        imagem: "Imagens/VidrosProdutos.jpeg",
+        nome: "Kit Rejuvenecedor",
+        preco: "R$ 120,00",
+descricao: "O Kit Aura renovada Facial é ideal para peles mistas e secas, desenvolvido para promover limpeza suave, tratamento eficaz e hidratação profunda, sem comprometer a barreira natural da pele. Sua fórmula ajuda a equilibrar áreas mistas, reduzir o aspecto ressecado e devolver maciez, viço e luminosidade à pele. Pensado para uma rotina completa e delicada, o kit atua na renovação da textura, no conforto da pele e na aparência saudável ao longo do dia, proporcionando um cuidado contínuo e sensorial agradável. Com embalagens de vidro e design delicado em tons de rosa claro e azul claro, o Aura renovada une sofisticação, autocuidado e tecnologia, transformando o skincare em um verdadeiro ritual de beleza"
+    },
+    2: {
+        imagem: "Imagens/ComunsProdutos.jpeg",
+        nome: "Kit Aura Renovada",
+        preco: "R$ 120,00",
+        descricao: "O Kit Aura renovada é ideal para peles oleosas, sensíveis e acneicas. Desenvolvido para limpar, tratar e hidratar sem agredir a pele, ele ajuda a controlar a oleosidade, acalmar sensibilidades e melhorar a aparência da acne. Com embalagens de vidro e design delicado em tons de rosa claro e azul claro, o kit une eficácia, cuidado e sofisticação para uma rotina facial simples e eficiente."
+    },
+3: {
+    imagem: "Imagens/Marrom.jpeg",
+    nome: "Kit Renova",
+    preco: "R$ 129,90",
+    descricao: "O Creme Perfumado Desodorante Corporal Rosas Secretas promove uma pele desodorizada, revigorada e sedosa ao toque, aliada a alta perfumação provocante que te desperta o desejo. Formulado com o poderoso Óleo de Quinoa, estimula em até 77% a produção natural de colágeno, agindo como estimulador de colágeno e auxiliando na firmeza da pele. Sua fragrância floral frutal apresenta a Rosa Turca, exuberante, cheia de mistério e o coração dessa criação olfativa, carregando o lado quente e envolvente da Baunilha. Profunda e provocante, em sintonia com a tendência da perfumaria com toque árabe, une opulência e sofisticação. Quais são os benefícios deste creme corporal feminino? Perfumação intensa e provocante que desperta o desejo imediato. Hidratação até 72h: Combate o ressecamento extremo da pele e previne o acinzentamento, proporcionando o brilho natural. Textura cremosa e encorpada: Não deixa camada oleosa na pele, não esfarela e não deixa residual. Rápida absorção que não escorre no calor: Pele seca mesmo em dias quentes. Creme corporal vegano. Com 97% de ingredientes naturais. Embalagem com plástico vegetal. Nativa SPA é a primeira marca do mundo que utiliza o óleo de quinoa para estimular a produção de colágeno na pele. SOBRE A LINHA Nativa SPA Rosas Secretas te convida a sentir a vida de pele e alma. Desperte todos os sentidos da sua pele com a combinação de perfumação, 1ª fragrância da marca inspirada na tendência de perfumaria árabe, com toque e tratamento proporcionados em um ritual intimista e exclusivo."
+},
+    4: {
+        imagem: "Imagens/Ciano.jpeg",
+        nome: "Kit Pele Seca",
+        preco: "R$ 78,90",
+        descricao: "Kit com 2 fórmulas: um gel hidratante facial com ácidos hialurônicos + glicerina com alta eficácia na melhora de linhas finas, firmeza, elasticidade, viço e hidratação da pele, e uma loção hidratante corporal com mix de emolientes + glicerina + manteiga de abacate + pantenol para hidratar, melhorar a textura e acalmar a pele do corpo"
+    },
+    5: {
+        imagem: "Imagens/Rosa.jpeg",
+        nome: "Kit Sensível",
+        preco: "R$ 78,90",
+        descricao: "Loção Hidratante com 11% de mix de emolientes, 5% de glicerina, 1% de manteiga de abacate e 1% de pantenol para hidratar, aumentar o viço, melhorar a textura e acalmar a pele."
+    }
+};
+
+// CARREGAR PRODUTO
+let p = produtos[produto];
+
+if (p) {
+    document.getElementById("imagemProduto").src = p.imagem;
+    document.getElementById("nomeProduto").innerText = p.nome;
+    document.getElementById("precoProduto").innerText = p.preco;
+    document.getElementById("descricaoProduto").innerText = p.descricao;
+}
+
+// LER MAIS
+function toggleDescricao() {
+    let texto = document.getElementById("descricaoProduto");
+    let botao = document.querySelector(".lerMais");
+
+    texto.classList.toggle("expandido");
+
+    if (texto.classList.contains("expandido")) {
+        botao.innerText = "Ler menos";
+    } else {
+        botao.innerText = "Ler mais";
+    }
+}
+</script>
+
+</body>
+</html>
