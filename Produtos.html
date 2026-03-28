@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="Css/Produtos.css">
 </head>
 <body>
-
+    <button id="btnCompraFixo" onclick="irParaCompras()">
+    🛒 Comprar
+    </button>
     <h1>Vitrine Renova Facial</h1>
     <div class="grid-produtos" id="grid"></div>
 
@@ -28,13 +30,15 @@
 
     <script>
         const produtos = [
-            { id: 1, nome: "Kit Anti-Idade", cor: "#8e5d3e", foco: "Rugas e Linhas", texto: "Focado em colágeno e firmeza para peles maduras.", img: "Imagens/Ciano.jpeg" },
+            { id: 1, nome: "Kit Anti-Idade", cor: "#8e5d3e", foco: "Rugas e Linhas", texto: "Focado em colágeno e firmeza para peles maduras.", img: "Imagens/Marrom.jpeg" },
             
             { id: 2, nome: "Kit Pele Sensível", cor: "#eeb7b7", foco: "Sensibilidade/Vermelhidão", texto: "Acalma e restaura a barreira cutânea com suavidade.", img: "Imagens/Rosa.jpeg" },
             
             { id: 3, nome: "Kit Pele Seca", cor: "#a2d2df", foco: "Pele Seca/Opaca", texto: "Hidratação profunda para peles que repuxam.", img: "Imagens/Ciano.jpeg" }
         ];
-
+        function irParaCompras(){
+        window.location.href = "compras.html";
+    }
         // Lógica de recomendação: Pega o parâmetro da URL
         const params = new URLSearchParams(window.location.search);
         const rec = params.get('recomendacao');

@@ -7,15 +7,12 @@
     <link rel="stylesheet" href="Css/Questionario.css">
 </head>
 <body>
-
     <button id="btnAjuda" onclick="toggleModal(true)">?</button>
-
     <div id="modalAjuda">
         <h3 id="ajuda-titulo">Dica do Especialista</h3>
         <p id="ajuda-texto"></p>
         <button class="fechar-modal" onclick="toggleModal(false)">Entendi!</button>
     </div>
-
     <div id="BoxGeral">
         <div class="progress-container" id="barra-container">
             <div class="progress-bar" id="progresso"></div>
@@ -31,9 +28,9 @@
 
         <div class="step" id="step-final">
             <h2>Análise Concluída</h2>
-            <div id="resultado-texto" style="text-align: left; background: #f0fff4; padding: 20px; border-radius: 15px; border-left: 6px solid #38a169; margin-bottom: 20px;"></div>
+            <div id="resultado-texto"></div>
             <button class="btn-resultado" onclick="verRecomendacao()">Ver Kit Recomendado ★</button>
-            <button onclick="location.reload()" style="background: #999;">Refazer Diagnóstico</button>
+            <button onclick="location.reload()" id="botaoDiagnostico">Refazer Diagnóstico</button>
         </div>
     </div>
 
