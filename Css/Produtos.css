@@ -1,0 +1,26 @@
+
+        :root { --bg: #f8f9fa; --text: #2d3436; --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+        
+        .grid-produtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 100%; max-width: 1200px; }
+
+        /* Card com expansão no Mouse Over */
+        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: var(--transition); cursor: pointer; height: 350px; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-10px); height: 450px; }
+
+        .img-box { height: 250px; background: #eee; display: flex; align-items: center; justify-content: center; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .info { padding: 20px; text-align: center; }
+        .desc-hidden { max-height: 0; opacity: 0; transition: var(--transition); font-size: 0.9rem; color: #666; margin-top: 15px; }
+        .card:hover .desc-hidden { max-height: 100px; opacity: 1; }
+
+        /* Janela de Produto Único (Modal) */
+        #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(8px); }
+        .modal-content { background: white; width: 90%; max-width: 800px; height: 70vh; border-radius: 30px; display: flex; overflow: hidden; position: relative; animation: pop 0.3s ease-out; }
+        .modal-left { flex: 1; display: flex; align-items: center; justify-content: center; transition: 0.5s; }
+        .modal-right { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .close { position: absolute; top: 20px; right: 20px; font-size: 30px; cursor: pointer; border: none; background: none; }
+        
+        @keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @media (max-width: 700px) { .modal-content { flex-direction: column; } }
