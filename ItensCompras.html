@@ -12,33 +12,26 @@
 
     <div class="imagem">
         <img id="imagemProduto" src="" alt="Produto">
-        <div class="galeria">
-            <img class="miniatura" id="img1">
-            <img class="miniatura" id="img2">
-            <img class="miniatura" id="img3">
-            <img class="miniatura" id="img4">
-        </div>
     </div>
 
     <div class="info">
         <h1 id="nomeProduto"></h1>
         <p style="color: #777;">Vendido e entregue por Renova</p>
 
-        <!-- AVALIAÇÕES -->
         <div class="avaliacoes">
             ★★★★★ <span class="numAvaliacoes">(45 avaliações)</span>
         </div>
 
         <p id="precoProduto" class="preco"></p>
+
         <div class="quantidade">
             <button onclick="diminuirQtd()">-</button>
             <span id="qtd">1</span>
             <button onclick="aumentarQtd()">+</button>
         </div>
 
-        <!-- BOTÕES -->
         <div class="botoes">
-            <button class="comprar">Comprar</button>
+            <button class="comprar" onclick="comprarProduto()">Comprar</button>
             <button class="favorito">❤</button>
         </div>
 
@@ -64,18 +57,19 @@ let produto = parametros.get("produto");
 // PRODUTOS
 let produtos = {
     1: { imagem: "Imagens/VidrosProdutos.jpeg", nome: "Kit Rejuvenecedor", preco: "R$ 120,00", descricao: "Loção Hidratante com 11% de mix de emolientes, 5% de glicerina, 1% de manteiga de abacate e 1% de pantenol para hidratar, aumentar o viço, melhorar a textura e acalmar a pele" },
-    2: { imagem: "Imagens/ComunsProdutos.jpeg", nome: "Kit Aura Renovada", preco: "R$ 120,00", descricao: "Desenvolvido para peles oleosas e sensíveis, este produto ajuda a controlar a oleosidade enquanto acalma e hidrata a pele, mantendo o equilíbrio natural e proporcionando uma aparência saudável e suave ao longo do dia." },
+    2: { imagem: "Imagens/ComunsProdutos.jpeg", nome: "Kit Aura Renovada", preco: "R$ 120,00", descricao: "Desenvolvido para peles oleosas e sensíveis, este produto ajuda a controlar a oleosidade enquanto acalma e hidrata a pele." },
     3: { imagem: "Imagens/Marrom.jpeg", nome: "Kit Renova", preco: "R$ 129,90", descricao: "Hidrata profundamente e deixa a pele com uma perfumação sofisticada e duradoura." },
-    4: { imagem: "Imagens/ItensRenova/ItemRenova4.jpeg", nome: "Máscara Renova", preco: "R$ 21,80", descricao: "Proporciona hidratação profunda e brilho intenso, ajudando a recuperar a maciez e a aparência saudável da pele e dos cabelos. Sua fórmula nutritiva age combatendo o ressecamento, deixando um toque suave, sedoso e iluminado ao longo do dia. Ideal para quem busca cuidado diário com resultado visível e sensação de hidratação prolongada." },
-    5: { imagem: "Imagens/Ciano.jpeg", nome: "Kit Pele Seca", preco: "R$ 78,90", descricao: "Ideal para peles ressecadas, este produto proporciona hidratação profunda e duradoura, ajudando a restaurar a maciez, elasticidade e o conforto da pele. Sua fórmula nutritiva combate o ressecamento e deixa a pele com aparência mais saudável, suave e hidratada ao longo do dia." },
-    6: { imagem: "Imagens/ItensRenova/ItemRenova1.jpeg", nome: "Creme Renova", preco: "R$ 21,80", descricao: "Proporciona hidratação profunda e auxilia na renovação da pele, deixando-a mais macia, suave e com aparência saudável. Sua fórmula ajuda a recuperar a vitalidade, melhorando a textura e promovendo um toque leve e confortável ao longo do dia." },
-    7: { imagem: "Imagens /ItensRenova/ItemRenova7.jpeg", nome: "Shampoo Renova", preco: "R$ 21,80", descricao: "Limpa suavemente os fios enquanto proporciona hidratação e maciez, ajudando a manter o cabelo saudável, leve e brilhante. Sua fórmula foi desenvolvida para uso diário, sem ressecar, deixando os fios soltos e com aparência bem cuidada." },
-    8: { imagem: "Imagens/Rosa.jpeg", nome: "Kit Renova Facial", preco: "R$ 99,99", descricao: "Oferece um cuidado completo para o rosto, ajudando a limpar, hidratar e revitalizar a pele no dia a dia. Sua fórmula contribui para uma aparência mais saudável, macia e equilibrada, proporcionando conforto e bem-estar ao longo do uso." },
-    9: { imagem: "Imagens/ItensRenova/ItemRenova9.jpeg", nome: "Creme Renova", preco: "R$ 21,80", descricao: "Proporciona maciez e hidratação, ajudando a manter a pele e os cabelos mais suaves, nutridos e com aparência saudável. Sua fórmula leve ajuda a combater o ressecamento, deixando uma sensação de conforto e cuidado ao longo do dia." },
-    10:{ imagem: "Imagens/ItensRenova/ItemRenova8.jpeg", nome: "Óleo Renova", preco: "R$ 33,90", descricao: "Proporciona nutrição profunda, ajudando a restaurar a hidratação natural e a maciez da pele e dos cabelos. Sua fórmula rica em nutrientes auxilia na recuperação do ressecamento, deixando uma aparência mais saudável, suave e brilhante." },
-    11:{ imagem: "Imagens/ItensRenova/ItemRenova0.jpeg", nome: "Leave-in Renova", preco: "R$ 21,80", descricao: "Ajuda no controle do frizz, deixando os cabelos mais alinhados, macios e com aparência saudável. Sua fórmula leve reduz o volume excessivo e proporciona fios mais disciplinados e com brilho natural ao longo do dia." },
-    12:{ imagem: "Imagens/ItensRenova/ItemRenova2.jpeg", nome: "Esfoliante Renova", preco: "R$ 21,80", descricao: "Desenvolvido para promover a renovação da pele, o produto ajuda a revitalizar e melhorar a aparência, deixando a pele mais uniforme, suave e com aspecto mais jovem e saudável." }
+    4: { imagem: "Imagens/ItensRenova/ItemRenova4.jpeg", nome: "Máscara Renova", preco: "R$ 21,80", descricao: "Proporciona hidratação profunda e brilho intenso." },
+    5: { imagem: "Imagens/Ciano.jpeg", nome: "Kit Pele Seca", preco: "R$ 78,90", descricao: "Ideal para peles ressecadas com hidratação profunda e duradoura." },
+    6: { imagem: "Imagens/ItensRenova/ItemRenova1.jpeg", nome: "Creme Renova", preco: "R$ 21,80", descricao: "Hidratação profunda e renovação da pele." },
+    7: { imagem: "Imagens/ItensRenova/ItemRenova7.jpeg", nome: "Shampoo Renova", preco: "R$ 21,80", descricao: "Limpa suavemente os fios e hidrata." },
+    8: { imagem: "Imagens/Rosa.jpeg", nome: "Kit Renova Facial", preco: "R$ 99,99", descricao: "Cuidado completo para o rosto." },
+    9: { imagem: "Imagens/ItensRenova/ItemRenova9.jpeg", nome: "Creme Renova", preco: "R$ 21,80", descricao: "Maciez e hidratação." },
+    10:{ imagem: "Imagens/ItensRenova/ItemRenova8.jpeg", nome: "Óleo Renova", preco: "R$ 33,90", descricao: "Nutrição profunda." },
+    11:{ imagem: "Imagens/ItensRenova/ItemRenova0.jpeg", nome: "Leave-in Renova", preco: "R$ 21,80", descricao: "Controle de frizz." },
+    12:{ imagem: "Imagens/ItensRenova/ItemRenova2.jpeg", nome: "Esfoliante Renova", preco: "R$ 21,80", descricao: "Renovação da pele." }
 };
+
 let p = produtos[produto];
 
 if (p) {
@@ -83,19 +77,10 @@ if (p) {
     document.getElementById("nomeProduto").innerText = p.nome;
     document.getElementById("precoProduto").innerText = p.preco;
     document.getElementById("descricaoProduto").innerText = p.descricao;
-
-    for (let i = 1; i <= 4; i++) {
-        document.getElementById("img" + i).src = p.imagem;
-    }
 }
 
-document.querySelectorAll(".miniatura").forEach(img => {
-    img.addEventListener("click", function() {
-        document.getElementById("imagemProduto").src = this.src;
-    });
-});
+// QUANTIDADE
 let quantidade = 1;
-
 
 function aumentarQtd() {
     quantidade++;
@@ -108,14 +93,16 @@ function diminuirQtd() {
         document.getElementById("qtd").innerText = quantidade;
     }
 }
+
+// LER MAIS
 function toggleDescricao() {
     const texto = document.getElementById("descricaoProduto");
     const botao = document.querySelector(".lerMais");
 
     texto.classList.toggle("expandido");
-
     botao.innerText = texto.classList.contains("expandido") ? "Ler menos" : "Ler mais";
 }
+
 window.addEventListener("load", function() {
     const texto = document.getElementById("descricaoProduto");
     const botao = document.querySelector(".lerMais");
@@ -126,10 +113,11 @@ window.addEventListener("load", function() {
         }
     }, 100);
 });
+
+// PRODUTOS RELACIONADOS
 let relacionadosDiv = document.getElementById("relacionados");
 let count = 0;
 
-//Esse metodo deixa meio limitado as opções de relacionados, mas é o mais simples de implementar. Ele mostra os primeiros 4 produtos diferentes do atual.
 for (let id in produtos) {
     if (id != produto && count < 4) {
         let item = produtos[id];
@@ -143,7 +131,10 @@ for (let id in produtos) {
         `;
         count++;
     }
-    function comprarProduto() {
+}
+
+// COMPRAR
+function comprarProduto() {
     let dadosCompra = {
         nome: document.getElementById("nomeProduto").innerText,
         preco: document.getElementById("precoProduto").innerText,
@@ -152,9 +143,7 @@ for (let id in produtos) {
     };
 
     localStorage.setItem("compra", JSON.stringify(dadosCompra));
-
     window.location.href = "checkout.html";
-}
 }
 </script>
 
