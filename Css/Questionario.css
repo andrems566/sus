@@ -1,16 +1,28 @@
 
         :root {
-            --bg-base: #f8f9fa;
+            --bg-base: rgba(16, 16, 16, 0.641);
             --primary: #6c5ce7;
             --text: #2d3436;
             --progress-bg: #e0e0e0;
         }
-
+        
         body { 
             font-family: 'Segoe UI', sans-serif; 
             transition: all 0.5s ease; 
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; margin: 0; background-color: var(--bg-base);
+            display: flex; justify-content: center; 
+            align-items: center;
+            min-height: 100vh; 
+            margin: 0;
+            background-color: var(--bg-base);
+        }
+        h1{
+            color: white;
+        }
+        .descricaoinicial {
+            color: #ffffff;
+            margin-top: 10px;
+            font-family: cursive;
+            font-size: 22px;
         }
 
         body.modal-open #BoxGeral {
@@ -26,9 +38,34 @@
             border-left: 6px solid #38a169; 
             margin-bottom: 20px;
         }
+        #BoxQuest {
+            color: white;
+        }
+        
+        .option{
+            color: black;
+             display: flex; 
+             align-items: center; 
+             background: #f8f9fa; 
+             padding: 18px; 
+             margin: 12px 0; 
+             border-radius: 15px; 
+             cursor: pointer; 
+             border: 1px solid transparent;
+        }
+        .option:hover { 
+            border-color: var(--primary);
+            transition: 1s;
+            background-color: rgb(183, 183, 183);
+        }
+
+        h2{
+            color: white;
+        }
+
         #BoxGeral {
             position: relative; 
-            background: white;
+            background: rgba(0, 0, 0, 0.824);
             padding: 80px 40px 40px 40px; 
             border-radius: 24px;
             box-shadow: 0 20px 45px rgba(0,0,0,0.1);
@@ -42,7 +79,7 @@
             border-radius: 15px; font-weight: bold; cursor: pointer; 
             width: 100%; margin-top: 20px;
         }
-
+        
         #btnAjuda {
             display: none;
             position: fixed;
@@ -95,21 +132,47 @@
             overflow: hidden; 
             display: none;
         }
-        .progress-bar { height: 100%; width: 0%; background: var(--primary); transition: 0.4s; }
+        .progress-bar { 
+            height: 100%; 
+            width: 0%; 
+            background: var(--primary); 
+            transition: 0.4s; }
 
         .voltar {
-            all: unset; position: absolute; top: 25px; left: 25px;
-            width: 45px; height: 45px; border-radius: 50%;
-            background: white; border: 2px solid var(--primary);
-            color: var(--primary); cursor: pointer; display: flex;
-            align-items: center; justify-content: center; font-size: 22px; z-index: 99;
+            all: unset; 
+            position: absolute; 
+            top: 25px; 
+            left: 25px;
+            width: 45px; 
+            height: 45px;
+            border-radius: 50%;
+            background: white; 
+            border: 2px solid var(--primary);
+            color: var(--primary); 
+            cursor: pointer; 
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            font-size: 22px; 
+            z-index: 99;
         }
 
-        .step, .BoxInicial { width: 100%; display: none; }
+        .step, .BoxInicial { 
+            width: 100%; 
+            display: none; }
+
         .active { display: block; }
-        .option { display: flex; align-items: center; background: #f8f9fa; padding: 18px; margin: 12px 0; border-radius: 15px; cursor: pointer; border: 1px solid transparent; }
         .option:hover { border-color: var(--primary); }
         .option input { margin-right: 15px; transform: scale(1.2); }
-        button:not(.voltar):not(.fechar-modal) { background: var(--primary); color: white; border: none; padding: 18px; border-radius: 15px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px; }
+        button:not(.voltar):not(.fechar-modal) { 
+            background: var(--primary); 
+            color: white;
+            border: none; 
+            padding: 18px; 
+            border-radius: 15px;
+            font-weight: bold; 
+            cursor: pointer;
+            width: 100%; 
+            margin-top: 20px; }
         
         .btn-resultado { background: #38a169 !important; margin-top: 10px !important; }

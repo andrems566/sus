@@ -10,8 +10,8 @@
     <button id="btnCompraFixo" onclick="irParaCompras()">
     🛒 Comprar
     </button>
-    <h1>Vitrine Renova Facial</h1>
-    <div class="grid-produtos" id="grid"></div>
+    <h1>Recomendados</h1>
+    <div class="grade" id="grid"></div>
 
     <div id="modal">
         <div class="modal-content">
@@ -22,21 +22,35 @@
             <div class="modal-right">
                 <h2 id="m-nome"></h2>
                 <p id="m-texto" style="line-height: 1.6; color: #444;"></p>
-                <button id="m-btn" style="padding: 15px; border: none; border-radius: 10px; color:
-                 white; cursor: pointer; font-weight: bold;">Comprar Agora</button>
+                <button id="ComprarBotao" onclick="irParaCompras()">Comprar Agora</button>
             </div>
         </div>
     </div>
 
     <script>
         const produtos = [
-            { id: 1, nome: "Kit Anti-Idade", cor: "#8e5d3e", foco: "Rugas e Linhas", texto: "Focado em colágeno e firmeza para peles maduras.", img: "Imagens/Marrom.jpeg" },
+            { id: 1, 
+            nome: "Kit Anti-Idade", 
+            cor: "#8e5d3e", foco: 
+            "Rugas e Linhas", 
+            texto: "Focado em colágeno e firmeza para peles maduras.", 
+            img: "Imagens/Marrom.jpeg" },
             
-            { id: 2, nome: "Kit Pele Sensível", cor: "#eeb7b7", foco: "Sensibilidade/Vermelhidão", texto: "Acalma e restaura a barreira cutânea com suavidade.", img: "Imagens/Rosa.jpeg" },
+            { id: 2, 
+            nome: "Kit Pele Sensível", 
+            cor: "#eeb7b7", 
+            foco: "Sensibilidade/Vermelhidão", 
+            texto: "Acalma e restaura a barreira cutânea com suavidade.", 
+            img: "Imagens/Rosa.jpeg" },
             
-            { id: 3, nome: "Kit Pele Seca", cor: "#a2d2df", foco: "Pele Seca/Opaca", texto: "Hidratação profunda para peles que repuxam.", img: "Imagens/Ciano.jpeg" }
+            { id: 3, 
+            nome: "Kit Pele Seca", 
+            cor: "#a2d2df", 
+            foco: "Pele Seca/Opaca", 
+            texto: "Hidratação profunda para peles que repuxam.", 
+            img: "Imagens/Ciano.jpeg" }
         ];
-        function irParaCompras(){
+        function irParaCompras (){
         window.location.href = "Compras.html";
         }
         // Lógica de recomendação: Pega o parâmetro da URL
@@ -67,7 +81,7 @@
             document.getElementById('m-texto').innerText = p.texto;
             document.getElementById('m-img').src = p.img;
             document.getElementById('m-cor').style.backgroundColor = p.cor; // Cor do fundo do modal igual ao produto
-            document.getElementById('m-btn').style.backgroundColor = p.cor;
+            document.getElementById('ComprarBotao').style.backgroundColor = p.cor;
             document.getElementById('modal').style.display = 'flex';
         }
 

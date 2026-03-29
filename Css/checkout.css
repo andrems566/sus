@@ -1,0 +1,82 @@
+
+body{
+    font-family: Arial;
+    background:#0000007c;
+    margin:0;
+}
+
+.topo{
+    background:#6c5ce7;
+    color:white;
+    padding:15px;
+    text-align:center;
+    font-size:24px;
+}
+
+.container{
+    max-width:90%;
+    margin:auto;
+    background:white;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+}
+
+.produto{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    border-bottom:1px solid #ddd;
+    padding-bottom:15px;
+    justify-content: center;
+}
+
+.produto img{
+    width:200px;
+}
+
+input{
+    width:80%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.total{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.botao{
+    background:#6c5ce7;
+    color:white;
+    border:none;
+    padding:15px;
+    width:100%;
+    font-size:18px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.calcular{
+    background:#333;
+    border: black 1px solid;
+    border-radius: 5px;
+    color:white;
+    border:none;
+    padding:10px;
+    cursor:pointer;
+}
+.ValorTotal{
+    text-align: center;
+    margin-top: 20px;
+    align-content: center;
+}
+
+.pagamento{
+    text-align:center;
+    margin-top:20px;
+    padding: 20px;
+}

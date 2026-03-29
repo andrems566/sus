@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Finalizar Compra</title>
+<link rel="stylesheet" href="Css/checkout.css">
+</head>
+<body>
+
+<div class="topo">Finalizar Compra</div>
+
+<div class="container">
+
+    <div class="produto">
+        <img id="imgProduto">
+        <div>
+            <h3 id="nomeProduto"></h3>
+            <p id="precoProduto"></p>
+            <p>Quantidade: <span id="qtdProduto"></span></p>
+        </div>
+    </div>
+
+    <h3>Cadastro</h3>
+    <input type="text" placeholder="Nome">
+    <input type="text" placeholder="Endereço">
+    <input type="text" placeholder="Cidade">
+    <input type="text" id="cep" placeholder="CEP">
+    <button class="calcular" onclick="calcularFrete()">🛒Calcular Frete🛒</button>
+    <p id="frete"></p>
+
+    <div class="ValorTotal">
+        <h3>Total</h3>
+        <p class="total" id="total">R$ 0,00</p>
+    </div>
+
+    <button class="botao">Finalizar Pedido</button>
+
+    <div class="pagamento">
+        <h3>Formas de pagamento</h3>
+        <img src="Imagens/pagamentos/pix.png" alt="PIX">
+        <img src="Imagens/pagamentos/apple.png" alt="Apple Pay">
+        <img src="Imagens/pagamentos/paypaç.png" alt="Google Pay">
+        <img src="Imagens/pagamentos/visa.png" alt="Visa">
+    </div>
+
+</div>
+
+<script>
+let compra = JSON.parse(localStorage.getItem("compra"));
+
+document.getElementById("imgProduto").src = compra.imagem;
+document.getElementById("nomeProduto").innerText = compra.nome;
+document.getElementById("precoProduto").innerText = compra.preco;
+document.getElementById("qtdProduto").innerText = compra.quantidade;
+
+let preco = parseFloat(compra.preco.replace("R$","").replace(",","."));
+let qtd = parseInt(compra.quantidade);
+
+function calcularFrete() {
+    let cep = document.getElementById("cep").value;
+
+    if(cep == ""){
+        alert("Digite o CEP");
+        return;
+    }
+
+    let frete = Math.floor(Math.random() * 20) + 10;
+    let total = (preco * qtd) + frete;
+
+    document.getElementById("frete").innerText = "Frete: R$ " + frete + ",00";
+    document.getElementById("total").innerText = "R$ " + total.toFixed(2);
+}
+</script>
+
+</body>
+</html>

@@ -2,147 +2,31 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hábitos Diários da Pele</title>
-    <link rel="stylesheet" href="Css/Questionario.css">
+    <title>Opções</title>
+    <link rel="stylesheet" href="Css/style.css">
 </head>
 <body>
-    <button id="btnAjuda" onclick="toggleModal(true)">?</button>
-    <div id="modalAjuda">
-        <h3 id="ajuda-titulo">Dica do Especialista</h3>
-        <p id="ajuda-texto"></p>
-        <button class="fechar-modal" onclick="toggleModal(false)">Entendi!</button>
-    </div>
-    <div id="BoxGeral">
-        <div class="progress-container" id="barra-container">
-            <div class="progress-bar" id="progresso"></div>
+
+<h1 class="titulo">Bem-vindo!</h1>
+
+<div class="container">
+
+    <a href="Compras.html" class="card">
+        <img src="Imagens/loja.avif">
+        <div class="info">
+            <h2>Loja</h2>
+            <p>Entre na área de compras e veja os produtos recomendados para você.</p>
         </div>
+    </a>
 
-        <div class="BoxInicial active" id="step-0">
-            <h1>🧼 Hábitos Diários</h1>
-            <p>Descubra como sua rotina afeta sua pele e receba uma recomendação personalizada.</p>
-            <button onclick="nextStep()">Iniciar Questionário</button>
+    <a href="Questionario.html" class="card">
+        <img src="Imagens/questionario.jfif">
+        <div class="info">
+            <h2>Questionário</h2>
+            <p>Responda o questionário para receber recomendações personalizadas.</p>
         </div>
+    </a>
+</div>
 
-        <div id="BoxQuest"></div>
-
-        <div class="step" id="step-final">
-            <h2>Análise Concluída</h2>
-            <div id="resultado-texto"></div>
-            <button class="btn-resultado" onclick="verRecomendacao()">Ver Kit Recomendado ★</button>
-            <button onclick="location.reload()" id="botaoDiagnostico">Refazer Diagnóstico</button>
-        </div>
-    </div>
-
-<script>
-    const questionario = [
-        { q: "1. Quantos copos de água você bebe por dia?", options: ["Menos de 3", "3 a 5", "6 a 8", "Mais de 8"], ajuda: "A água hidrata a pele de dentro para fora, mantendo a elasticidade e o brilho natural." },
-        { q: "2. Qual sua maior preocupação de beleza hoje?", options: ["Rugas e Linhas", "Sensibilidade/Vermelhidão", "Pele Seca/Opaca"], ajuda: "Isso nos ajuda a definir qual kit de ativos é o mais urgente para você agora." },
-        { q: "3. Usa protetor solar diariamente?", options: ["Sempre", "Às vezes", "Raramente", "Nunca"], ajuda: "O sol é o maior causador de envelhecimento precoce e manchas." },
-        { q: "4. Você dorme quantas horas por noite?", options: ["Menos de 5", "5 a 6", "7 a 8", "Mais de 8"], ajuda: "É durante o sono que as células da pele se renovam." },
-        { q: "5. Com que frequência consome açúcar?", options: ["Diariamente", "Algumas vezes", "Raramente", "Nunca"], ajuda: "O excesso de açúcar quebra as fibras de colágeno da pele." },
-        { q: "6. Como sua pele costuma reagir a novos produtos?", options: ["Fica vermelha/arde", "Fica oleosa", "Absorve rápido", "Normal"], ajuda: "Peles sensíveis precisam de fórmulas hipoalergênicas." },
-        { q: "7. Sente sua pele repuxar após o banho?", options: ["Sempre", "Às vezes", "Raramente", "Nunca"], ajuda: "O repuxamento é um sinal claro de que a barreira de hidratação está comprometida." },
-        { q: "8. Remove a maquiagem antes de dormir?", options: ["Sempre", "Às vezes", "Raramente", "Nunca"], ajuda: "Dormir de maquiagem impede a respiração da pele e causa cravos." },
-        { q: "9. Sua alimentação é rica em frutas e legumes?", options: ["Sempre", "Às vezes", "Raramente", "Nunca"], ajuda: "Antioxidantes combatem os radicais livres que envelhecem a pele." },
-        { q: "10. Qual a aparência dos seus poros?", options: ["Dilatados", "Quase invisíveis", "Sinto a pele descamando"], ajuda: "Isso ajuda a identificar o nível de hidratação ou necessidade de firmeza." }
-    ];
-
-    let CorrentePerguntas = 0;
-    let answers = {};
-    let tipoRecomendado = "Rugas e Linhas"; // Padrão
-
-    const container = document.getElementById("BoxQuest");
-    questionario.forEach((item, index) => {
-        const div = document.createElement("div");
-        div.className = "step";
-        div.id = `step-${index + 1}`;
-        div.innerHTML = `
-            <button class="voltar" onclick="prevStep()">&larr;</button>
-            <h2>${item.q}</h2>
-            <div class="options-container">
-                ${item.options.map(opt => `
-                    <label class="option">
-                        <input type="radio" name="q${index}" value="${opt}"> ${opt}
-                    </label>
-                `).join("")}
-            </div>
-            <button onclick="nextStep()">Próxima</button>
-        `;
-        container.appendChild(div);
-    });
-
-    function toggleModal(abrir) {
-        const modal = document.getElementById("modalAjuda");
-        if (abrir) {
-            document.getElementById("ajuda-texto").innerText = questionario[CorrentePerguntas - 1].ajuda;
-            modal.style.display = "block";
-            document.body.classList.add("modal-open");
-        } else {
-            modal.style.display = "none";
-            document.body.classList.remove("modal-open");
-        }
-    }
-
-    function updateUI() {
-        const btnAjuda = document.getElementById("btnAjuda");
-        btnAjuda.style.display = (CorrentePerguntas > 0 && CorrentePerguntas <= questionario.length) ? "block" : "none";
-        
-        const bar = document.getElementById("progresso");
-        const containerBar = document.getElementById("barra-container");
-        if (CorrentePerguntas > 0 && CorrentePerguntas <= questionario.length) {
-            containerBar.style.display = "block";
-            bar.style.width = (CorrentePerguntas / questionario.length * 100) + "%";
-        } else {
-            containerBar.style.display = "none";
-        }
-    }
-
-    function nextStep() {
-        const currentDiv = document.getElementById(`step-${CorrentePerguntas}`);
-        if (CorrentePerguntas > 0) {
-            const selected = currentDiv.querySelector("input:checked");
-            if (!selected) return alert("Por favor, selecione uma opção!");
-            answers[`q${CorrentePerguntas - 1}`] = selected.value;
-            
-            // Lógica simples para pegar a recomendação da Pergunta 2
-            if (CorrentePerguntas === 2) tipoRecomendado = selected.value;
-        }
-        currentDiv.classList.remove("active");
-        CorrentePerguntas++;
-        if (CorrentePerguntas <= questionario.length) {
-            document.getElementById(`step-${CorrentePerguntas}`).classList.add("active");
-            updateUI();
-        } else {
-            showResult();
-        }
-    }
-
-    function prevStep() {
-        document.getElementById(`step-${CorrentePerguntas}`).classList.remove("active");
-        CorrentePerguntas--;
-        document.getElementById(`step-${CorrentePerguntas}`).classList.add("active");
-        updateUI();
-    }
-
-    function showResult() {
-        updateUI();
-        document.getElementById("step-final").classList.add("active");
-        let score = 0;
-        const boasRespostas = ["Sempre", "Mais de 8", "6 a 8", "7 a 8", "Não", "Nunca", "2 vezes", "Normal", "Quase invisíveis"];
-        Object.values(answers).forEach(a => { if (boasRespostas.includes(a)) score++; });
-        
-        document.getElementById("resultado-texto").innerHTML = `
-            <p><strong>Sua Pontuação de Saúde: ${score}/10</strong></p>
-            <p>${score >= 7 ? "✨ Seus hábitos são ótimos!" : "⚠️ Sua rotina precisa de ajustes para proteger sua pele."}</p>
-            <hr>
-            <p>Com base nas suas respostas, o cuidado mais indicado para você agora é para: <strong>${tipoRecomendado}</strong>.</p>
-        `;
-    }
-
-    function verRecomendacao() {    
-        window.location.href = `Produtos.html?recomendacao=${encodeURIComponent(tipoRecomendado)}`;
-    }
-</script>
 </body>
 </html>
